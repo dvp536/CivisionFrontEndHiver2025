@@ -1,6 +1,5 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
-import "bulma/css/bulma.min.css"
 import "font-awesome/css/font-awesome.min.css"
 import App from "./App.jsx";
 

@@ -11,13 +11,13 @@
     "fix": "eslint . --ext js,jsx --fix --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
-    "bulma": "^0.9.4",
     "chart.js": "^4.4.6",
     "font-awesome": "^4.7.0",
     "react": "^18.2.0",
+    "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
