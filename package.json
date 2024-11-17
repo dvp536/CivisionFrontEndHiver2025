@@ -3,12 +3,15 @@
   "private": true,
   "version": "0.0.1",
   "type": "module",
+  "homepage": "https://dvp536.github.io/CivisionFrontEndHiver2025",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "fix": "eslint . --ext js,jsx --fix --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "bulma": "^0.9.4",
