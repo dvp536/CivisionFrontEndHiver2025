@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.0.1",
   "type": "module",
-  "homepage": "https://dvp536.github.io/CivisionFrontEndHiver2025",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

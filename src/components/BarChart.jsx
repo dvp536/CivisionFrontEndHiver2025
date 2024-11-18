@@ -5,17 +5,27 @@ import importedData from "../../public/database.json";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-const BarChart = () => {
-    const [prix, setPrix] = useState([]);
+const BarChart = ({ selectedSeason }) => {
+    const [levelCounts, setLevelCounts] = useState({ novice: 0, pro: 0, moyen: 0 });
 
     useEffect(() => {
-        function loadPrix() {
-            const dataPrix = importedData.map((data) => data.prix);
-            setPrix(dataPrix);
+        function loadLevels() {
+            // Filter the data by the selected season and count levels
+            const filteredData =
+            selectedSeason.toLowerCase() === "all"
+                ? importedData
+                : importedData.filter((entry) => entry.saison === selectedSeason.toLowerCase());
+
+            const counts = filteredData.reduce((acc, entry) => {
+                acc[entry.niveau] = (acc[entry.niveau] || 0) + 1;
+                return acc;
+            }, { novice: 0, pro: 0, moyen: 0 });
+
+            setLevelCounts(counts);
         }
 
-        loadPrix();
-    }, []);
+        loadLevels();
+    }, [selectedSeason]); // Re-run when the selected season changes
 
     const options = {
         responsive: true,
@@ -25,19 +35,19 @@ const BarChart = () => {
             },
             title: {
                 display: true,
-                text: "Bar Chart: Quarterly Revenue & Expenses Comparison",
+                text: `Nombre de Personnes par Niveau (${selectedSeason})`,
             },
         },
     };
 
-    const labels = ["Été", "Printemps", "Automne", "Hivers"];
+    const labels = ["Novice", "Pro", "Moyen"];
     const data = {
         labels,
         datasets: [
             {
-                label: "Q1 Sales",
-                data: prix,
-                backgroundColor: "rgba(75, 192, 192)",
+                label: "Nombre de Personnes",
+                data: [levelCounts.novice, levelCounts.pro, levelCounts.moyen],
+                backgroundColor: "rgba(75, 192, 192, 0.5)",
                 borderColor: "rgb(75, 192, 192)",
                 borderWidth: 1,
             },

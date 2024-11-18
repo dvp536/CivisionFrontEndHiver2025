@@ -60,7 +60,7 @@ const DoughnutChart = () => {
             },
             title: {
                 display: true,
-                text: "Doughnut Chart: Total Prices by Season",
+                text: "Prix Total par Saison",
             },
         },
     };

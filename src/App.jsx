@@ -47,7 +47,7 @@ function App() {
             </div>
             <div className="charts-container">
                 <div className="BarChart">
-                    <BarChart />
+                    <BarChart selectedSeason={seasonFilter} />
                 </div>
                 <div className="Pie">
                     <PieChart />
